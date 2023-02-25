@@ -12,11 +12,19 @@ def Ret_Pregunta01():
     '''
     Debes utilizar Pandas para ingestar en un objeto Dataframe el contenido del archivo provisto
     "Fuentes_Consumo_Energia.csv".
-    Esta función debe informar la cantidad de registros cuya entidad sean Colombia o México retornando ese valor en un dato de tipo tupla (catidad de registros Colombia, catidad de registros México).
+    Esta función debe informar la cantidad de registros cuya entidad sean Colombia o México retornando ese
+    valor en un dato de tipo tupla (catidad de registros Colombia, catidad de registros México).
     Pista: averiguar la funcion Shape
     '''
     #Tu código aca:
     #return 'Funcion incompleta'
+    
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
+    a = df[df["Entity"]=="Colombia"].shape[0]
+    b = df[df["Entity"]=="Mexico"].shape[0]
+    return (a,b)
+    
+    
 
 def Ret_Pregunta02():
     '''
@@ -26,16 +34,22 @@ def Ret_Pregunta02():
     retornando ese valor en un dato de tipo entero.
     '''
     #Tu código aca:
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
+    c = df.drop(columns= ['Code' , 'Entity'])
+    return c.shape[1]
+    
     #return 'Funcion incompleta'
 
 def Ret_Pregunta03():
     '''
     Debes utilizar Pandas para ingestar en un objeto Dataframe el contenido del archivo provisto
     "Fuentes_Consumo_Energia.csv".
-    Esta función debe informar la cantidad de registros de la columna Year sin tener en cuenta aquellos con valores faltantes
-    retornando ese valor en un dato de tipo entero.
+    Esta función debe informar la cantidad de registros de la columna Year sin tener en cuenta aquellos
+    con valores faltantes retornando ese valor en un dato de tipo entero.
     '''
     #Tu código aca:
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
+    return df["Year"].count()
     #return 'Funcion incompleta'
 
 def Ret_Pregunta04():
@@ -54,6 +68,7 @@ def Ret_Pregunta04():
     redondeado a 2 decimales, retornando ese valor en un dato de tipo float.
     '''
     #Tu código aca:
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
     #return 'Funcion incompleta'
 
 def Ret_Pregunta05():
@@ -64,6 +79,11 @@ def Ret_Pregunta05():
     para la entidad 'Europe' retornando ese valor en un dato de tipo entero.
     '''
     #Tu código aca:
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
+    d = df[df["Entity"]=="Europe"]
+    d = d[  d["Hydro_Generation_TWh"]==d["Hydro_Generation_TWh"].max()]
+    return int(d["Year"].values[0])
+    
     #return 'Funcion incompleta'
 
 def Ret_Pregunta06(m1, m2, m3):
@@ -81,6 +101,10 @@ def Ret_Pregunta06(m1, m2, m3):
             False            -> Valor devuelto por la función en este ejemplo
     '''
     #Tu código aca:
+    
+    e = m1.shape[1] == m2.shape[0]
+    f = m2.shape[1] == m3.shape[0]
+    return e and f
     #return 'Funcion incompleta'
 
 def Ret_Pregunta07():
@@ -101,14 +125,20 @@ def Ret_Pregunta08():
     retornando ese valor en un dato de tipo entero.
     '''
     #Tu código aca:
+    df=pd.read_csv("datasets/Fuentes_Consumo_Energia.csv")
+    return int(df["Entity"].value_counts().shape[0])
     #return 'Funcion incompleta'
 
 def Ret_Pregunta09():
     '''
     Debes utilizar Pandas para ingestar en un objeto Dataframe el contenido del archivo provisto
     "datasets/Tabla1_ejercicio.csv" y "datasets/Tabla2_ejercicio.csv".
-    Esta función debe retornar: score_promedio_femenino y score_promedio_masculino en formato tupla, teniendo en cuenta que no debe haber valores repetidos.'''
+    Esta función debe retornar: score_promedio_femenino y score_promedio_masculino en formato tupla, teniendo 
+    en cuenta que no debe haber valores repetidos.'''
     #Tu código aca:
+    t1 = pd.read_csv("datasets/Tabla1_ejercicio.csv", sep =";")
+    t2 = pd.read_csv("datasets/Tabla2_ejercicio.csv", sep =";")
+    
     #return 'Funcion incompleta'
 
 def Ret_Pregunta10(lista):
